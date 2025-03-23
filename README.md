@@ -17,7 +17,7 @@ venv\scripts\activate
 pip install -r requirements.txt
 ```
 5. You will need to add your data to the file: `secrets.py`, which should contain:
-- URL - a link to the site where the information will be parsed;
+- `URL` - a link to the site where the information will be parsed;
 - `LOGIN_URL` - a link to authorization;
 - `USERNAME` - login from the account;
 - `PASSWORD` - password from the account;
@@ -38,12 +38,7 @@ python main.py
 8. Wait for notification in PM.
 
 ## Upcoming improvements:
-- Adding the ability to enable `--headles` mode. It is written about [here](https://www.selenium.dev/blog/2023/headless-is-going-away/);
-- Implementation of improved stability of the parser on Linux servers:
-- Disabling hardware acceleration via GPU;
-- Using `/tmp` instead of `/dev/shm` (shared memory between processes in Linux);
-- Disabling the isolated environment (sandbox) Chrome.
----
+- creating a docker-image for subsequent successful download and deployment of a docker container
 
 # Парсер сайтов (где требуется авторизация) на python с регулярной отправкой уведомлений в бот-телеграм на основе selenium на windows 10/11
 
@@ -63,7 +58,7 @@ venv\scripts\activate
 pip install -r requirements.txt
 ```
 5. Вам понадобится добавить свои данные в файл: `secrets.py`, в котором должны быть:
-- URL - ссылка на сайт, где будет парситься информация;
+- `URL` - ссылка на сайт, где будет парситься информация;
 - `LOGIN_URL`- ссылка на авторизацию;
 - `USERNAME` - логин от учетной записи;
 - `PASSWORD` - пароль от учетной записи;
@@ -84,8 +79,4 @@ python main.py
 8. Ожидать уведомления в л.с.
 
 ## Предстоящие улучшения:
-- Добавление возможности включения режима `--headles`. Про него написано [тут](https://www.selenium.dev/blog/2023/headless-is-going-away/);
-- Реализация улучшения стабильности работы парсера на серверах linux:
-    - Отключение аппаратного ускорения через GPU;
-    - Использование `/tmp` вместо `/dev/shm` (общая память между процессами в Linux);
-    - Отключение изолированной среды (sandbox) Chrome.
+- создание docker-image для последующей успешной загрузки и развертывания docker контейнера

@@ -8,7 +8,16 @@ end_min = int(input('Введите конечную минуту в форма�
 # Authentication
 # Аутентификация
 def authenticate(class_name_btn_auth):
-    driver = webdriver.Chrome()
+    options = Options()
+    options.add_argument('--headless')
+    options.add_experimental_option("excludeSwitches", ["enable-automation"]) # Отключает флаг enable-automation, который указывает, что браузер запущен через Selenium / Disables the enable-automation flag, which indicates that the browser is launched via Selenium.
+    options.add_experimental_option("useAutomationExtension", False) # Отключает автоматическое расширение, которое браузер добавляет при запуске. / Disables the automatic extension that the browser adds on startup.
+    options.add_argument("--disable-blink-features=AutomationControlled") # Отключает специальную функцию , которая помечает браузер как управляемый автоматизированными инструментами. / Disables a special feature that marks the browser as being controlled by automated tools.
+    options.add_argument("--disable-webrtc") # Отключает WebRTC, который может раскрыть реальный IP-адрес пользователя. / Disables WebRTC, which can reveal the user's real IP address.
+    options.add_argument('--disable-gpu') # Отключает аппаратное ускорение через GPU / Disables hardware acceleration via GPU
+    # options.add_argument('--disable-dev-shm-usage') # При запуске в контейнерах Docker стандартный /dev/shm имеет ограниченный размер, что может вызывать сбои. / When running in Docker containers, the default /dev/shm has a limited size, which can cause crashes.
+    # options.add_argument('--no-sandbox') # Позволяет запускать браузер без ошибок в контейнерах и виртуальных машинах. / Allows you to run the browser without errors in containers and virtual machines.
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     driver.get(LOGIN_URL)
     username_input = driver.find_element(By.NAME, "username")
     password_input = driver.find_element(By.NAME, "password")
